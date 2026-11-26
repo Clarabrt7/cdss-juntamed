@@ -1,0 +1,11 @@
+-- =============================================================================
+-- 03_indices.sql
+-- Índices de Desempenho (Spec 1 e FKs críticas)
+-- =============================================================================
+
+-- Spec 1 (listar_exames_criticos_atendimento):
+-- Índice composto B-Tree para filtrar continuamente por hadm_id e flag_anormal = TRUE
+-- com ordenação temporal decrescente em custo O(log N):
+--
+-- CREATE INDEX idx_exame_clinico_criticos
+--     ON exame_clinico (hadm_id, flag_anormal, charttime DESC);
