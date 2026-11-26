@@ -11,28 +11,21 @@ O projeto integra três fontes públicas de dados clínicos e cadastrais (**Open
 cdss-juntamed/
 ├── README.md                  # Documentação principal e roteiro de execução
 ├── requirements.txt           # Dependências Python para ETL e testes
-├── .env.example               # Modelo de variáveis de ambiente (banco e APIs)
+├── .env                       # Modelo de variáveis de ambiente (banco e APIs)
 ├── .gitignore                 # Arquivos ignorados (dados brutos, .env, venv)
 ├── data/
 │   ├── raw/                   # Dados brutos baixados (ANVISA CSV, MIMIC-IV CSV, CNES JSON)
 │   └── processed/             # Dados sanitizados prontos para carga
-├── specs/                     # Especificações YAML das operações críticas (Etapa 3)
+├── specs/                     # Especificações YAML das operações críticas 
 │   ├── spec_01_listar_exames_criticos.yaml
 │   ├── spec_02_convocar_junta_deliberativa.yaml
 │   └── spec_03_prescrever_medicamento_com_alerta.yaml
-├── sql/                       # Scripts SQL do projeto físico (Etapa 4)
+├── sql/                      # Scripts SQL do projeto físico (Etapa 4)
 │   ├── 01_ddl_tabelas.sql
 │   ├── 02_ddl_staging_auditoria.sql
 │   ├── 03_indices.sql
 │   ├── 04_funcoes_transacoes.sql
 │   └── 05_seed_inicial.sql
-└── etl/                       # Pipeline de extração, sanitização e carga em 2 estágios
-    ├── config.py
-    ├── extract_cnes.py
-    ├── extract_anvisa.py
-    ├── extract_mimic.py
-    ├── load_staging.py
-    └── merge_production.py
 ```
 
 ## O que é necessário para executar o trabalho
@@ -51,7 +44,7 @@ cdss-juntamed/
 3. **PhysioNet MIMIC-IV Clinical Database Demo v2.2** (Pacientes, internações e exames):
    - Portal: `https://physionet.org/content/mimic-iv-demo/` (`admissions.csv`, `patients.csv`, `labevents.csv`).
 
-### 3. Dados Iniciais de Governança (`sql/05_seed_inicial.sql`)
+### 3. Dados Iniciais de Governança
 - Cadastro inicial de **Diretrizes Clínicas Oficiais (CONITEC/SUS)** para atender à regra **R7**.
 - Cadastro inicial dos **Agentes de IA** (`AGENTE_IA`) para atender à regra **R6**.
 
